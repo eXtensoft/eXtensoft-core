@@ -22,7 +22,7 @@ branches:
     - develop
 
 # Build worker image (VM template)
-image: Visual Studio 2015
+image: Visual Studio 2019
 
 # Do not build on tags (GitHub, Bitbucket, GitLab, Gitea)
 skip_tags: true
@@ -33,7 +33,16 @@ skip_branch_with_pr: true
 # Maximum number of concurrent jobs for the project
 max_jobs: 1
 
-
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+  
+  
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
@@ -55,6 +64,10 @@ configuration: Release
 #  - Debug
 #  - Release
 
+# scripts to run before build
+before_build:
+  - nuget restore
+  
 # Build settings, not to be confused with "before_build" and "after_build".
 # "project" is relative to the original build directory and not influenced by directory changes in "before_build".
 build:
@@ -63,34 +76,16 @@ build:
 
 
   # MSBuild verbosity level
-  verbosity: detailed
+  verbosity: normal
 
 #---------------------------------#
 #      artifacts configuration    #
 #---------------------------------#
 
-artifacts:
 
-  # pushing all *.nupkg files in build directory recursively
-  - path: '**\*.nupkg'
 #---------------------------------#
 #     deployment configuration    #
 #---------------------------------#
-
-# providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
-# provider names are case-sensitive!
-deploy:
-
-
-    # Deploy to GitHub Releases
-  - provider: GitHub
-    artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
-    draft: false
-    prerelease: false
-    on:
-      branch: master                # release from master branch only
-      APPVEYOR_REPO_TAG: true       # deploy on tag push only
-      
 
 
 #---------------------------------#
@@ -102,7 +97,7 @@ notifications:
   # Email
   - provider: Email
     to:
-      - robertknelson@mail.com
+      - robertknelson@gmail.com
     subject: 'Build {{status}}'                  # optional
     message: "{{message}}, {{commitId}}, ..."    # optional
     on_build_status_changed: true
