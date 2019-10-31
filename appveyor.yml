@@ -1,3 +1,4 @@
+
 # Notes:
 #   - Minimal appveyor.yml file is an empty file. All sections are optional.
 #   - Indent each level of configuration with 2 spaces. Do not use tabs!
@@ -64,6 +65,10 @@ configuration: Release
 #  - Debug
 #  - Release
 
+# Automatically register private account and/or project AppVeyor NuGet feeds.
+nuget:
+  project_feed: true
+
 # scripts to run before build
 before_build:
   - nuget restore
@@ -73,7 +78,8 @@ before_build:
 build:
   parallel: true                  # enable MSBuild parallel builds
   project: xf-core.sln      # path to Visual Studio solution or project
-
+  publish_nuget: true
+  include_nuget_references: true
 
   # MSBuild verbosity level
   verbosity: normal
