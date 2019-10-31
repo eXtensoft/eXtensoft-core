@@ -88,17 +88,6 @@ build:
 #      artifacts configuration    #
 #---------------------------------#
 
-artifacts:
-
-  # pushing a single file
-  - path: test.zip
-
-  # pushing entire folder as a zip archive
-  - path: logs
-
-  # pushing all *.nupkg files in build directory recursively
-  - path: '**\*.nupkg'
-
 
 #---------------------------------#
 #     deployment configuration    #
