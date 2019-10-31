@@ -21,6 +21,9 @@ branches:
     - master
     - develop
 
+# Build worker image (VM template)
+image: Visual Studio 2015
+
 # Do not build on tags (GitHub, Bitbucket, GitLab, Gitea)
 skip_tags: true
 
