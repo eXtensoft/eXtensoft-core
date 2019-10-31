@@ -67,7 +67,6 @@ configuration: Release
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
-  account_feed: true
   project_feed: true
 
 # scripts to run before build
