@@ -73,7 +73,7 @@ build:
 
 
   # MSBuild verbosity level
-  verbosity: quiet|minimal|normal|detailed
+  verbosity: detailed
 
 #---------------------------------#
 #      artifacts configuration    #
