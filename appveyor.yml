@@ -33,7 +33,16 @@ skip_branch_with_pr: true
 # Maximum number of concurrent jobs for the project
 max_jobs: 1
 
-
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+  
+  
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
