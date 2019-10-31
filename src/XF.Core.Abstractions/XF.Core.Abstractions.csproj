@@ -1,5 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
+  <PropertyGroup>
+    <AssemblyName>XF.Core.Abstractions.dll</AssemblyName>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersionPrefix>pre</PackageVersionPrefix>
+    <PackageVersionSuffix>suf</PackageVersionSuffix>
+    <Authors>eXtensoft Contributors</Authors>
+    <Title>eXtensible Core</Title>
+    <Description></Description>
+    <Copyright>Copyright 2019</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/eXtensoft/eXtensoft-core/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/eXtensoft/eXtensoft-core/wiki</PackageProjectUrl>
+    <PackageTags>eXtensible xf framework dotnetcore</PackageTags>
+    <PackageReleaseNotes>none</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/eXtensoft/eXtensoft-core/wiki</RepositoryUrl>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+  
+  
+  
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
