@@ -82,7 +82,7 @@ build:
   include_nuget_references: true
 
   # MSBuild verbosity level
-  verbosity: normal
+  verbosity: minimal
 
 #---------------------------------#
 #      artifacts configuration    #
