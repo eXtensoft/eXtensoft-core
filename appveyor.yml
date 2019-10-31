@@ -30,10 +30,6 @@ skip_branch_with_pr: true
 # Maximum number of concurrent jobs for the project
 max_jobs: 1
 
-# enable patching of AssemblyInfo.* files
-assembly_info:
-  patch: true
-  
 
 #---------------------------------#
 #       build configuration       #
