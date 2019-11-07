@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>eXtensoft.Core.Abstractions</id>
+    <version>1.0.0-alpha.1</version>
+    <title>eXtensoft Core Abstractions</title>
+    <authors>eXtensoft developers</authors>
+    <owners>eXtensoft development team</owners>
+    <licenseUrl>https://github.com/eXtensoft/eXtensoft-core/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/eXtensoft/eXtensoft-core/wiki</projectUrl>
+    <iconUrl>https://github.com/eXtensoft/eXtensoft-core/blob/master/useravatar.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package contains the core abstractions, models, and data structures for the eXtensoft suite of software</description>
+    <releaseNotes>This release consists of initial development concepts for the eXtensoft suite of software</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>eXtensoft API Microservices CQRS</tags>
+  </metadata>
+</package>
