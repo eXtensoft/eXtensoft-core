@@ -92,7 +92,11 @@ build:
 #---------------------------------#
 #     deployment configuration    #
 #---------------------------------#
-
+deploy:
+  provider: NuGet
+  api_key:
+    secure: ohxwOyN/l8dkBi72+g+9GDZa5+/GCwtQROGRQHlKWaBVbyl4U0EdGno4yLYnqUpy
+  skip_symbols: false
 
 #---------------------------------#
 #         notifications           #
