@@ -16,6 +16,7 @@
     <RepositoryUrl>https://github.com/eXtensoft/eXtensoft-core/wiki</RepositoryUrl>
     <Version>1.0.1</Version>
     <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   
   
