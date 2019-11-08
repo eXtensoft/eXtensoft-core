@@ -12,6 +12,16 @@
 # version format
 version: 1.0.{build}
 
+# Build worker image (VM template)
+image: Visual Studio 2019
+
+init:
+- cmd: >-
+    msbuild -version
+
+    dotnet --version
+
+
 # you can use {branch} name in version format too
 # version: 1.0.{build}-{branch}
 
@@ -22,8 +32,7 @@ branches:
     - master
     - develop
 
-# Build worker image (VM template)
-image: Visual Studio 2019
+
 
 # Do not build on tags (GitHub, Bitbucket, GitLab, Gitea)
 skip_tags: true
@@ -43,6 +52,10 @@ dotnet_csproj:
   file_version: '{version}'
   informational_version: '{version}'
   
+nuget:
+  account_feed: true
+  project_feed: true
+  disable_publish_on_pr: true
   
 #---------------------------------#
 #       build configuration       #
