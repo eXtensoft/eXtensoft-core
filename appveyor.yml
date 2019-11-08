@@ -96,7 +96,8 @@ build:
 #---------------------------------#
 #      artifacts configuration    #
 #---------------------------------#
-
+artifacts:
+- path: '**\*.nupkg'
 
 #---------------------------------#
 #     deployment configuration    #
