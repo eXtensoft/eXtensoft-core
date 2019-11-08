@@ -65,10 +65,6 @@ configuration: Release
 #  - Debug
 #  - Release
 
-# Automatically register private account and/or project AppVeyor NuGet feeds.
-nuget:
-  project_feed: true
-
 # scripts to run before build
 before_build:
   - nuget restore
@@ -97,6 +93,7 @@ deploy:
   api_key:
     secure: ohxwOyN/l8dkBi72+g+9GDZa5+/GCwtQROGRQHlKWaBVbyl4U0EdGno4yLYnqUpy
   skip_symbols: false
+  artifact: /.*\.nupkg/
 
 #---------------------------------#
 #         notifications           #
