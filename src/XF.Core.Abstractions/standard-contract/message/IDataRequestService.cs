@@ -7,22 +7,22 @@ namespace XF.Rest.Abstractions
 {
     public interface IDataRequestService
     {
-        IResponse<T> Get<T>(IRequest<T> request) where T : class, new();
+        IMessageContext<T> Get<T>(IMessageContext<T> request) where T : class, new();
 
-        IResponse<T> Delete<T>(IRequest<T> request) where T : class, new();
+        IMessageContext<T> Delete<T>(IMessageContext<T> request) where T : class, new();
 
-        IResponse<T> Post<T>(IRequest<T> request) where T : class, new();
+        IMessageContext<T> Post<T>(IMessageContext<T> request) where T : class, new();
 
-        IResponse<T> Put<T>(IRequest<T> request) where T : class, new();
+        IMessageContext<T> Put<T>(IMessageContext<T> request) where T : class, new();
 
 
-        Task<IResponse<T>> GetAsync<T>(IRequest<T> request) where T : class, new();
+        Task<IMessageContext<T>> GetAsync<T>(IMessageContext<T> request) where T : class, new();
 
-        Task<IResponse<T>> DeleteAsync<T>(IRequest<T> request) where T : class, new();
+        Task<IMessageContext<T>> DeleteAsync<T>(IMessageContext<T> request) where T : class, new();
 
-        Task<IResponse<T>> PostAsync<T>(IRequest<T> request) where T : class, new();
+        Task<IMessageContext<T>> PostAsync<T>(IMessageContext<T> request) where T : class, new();
 
-        Task<IResponse<T>> PutAsync<T>(IResponse<T> request) where T : class, new();
+        Task<IMessageContext<T>> PutAsync<T>(IMessageContext<T> request) where T : class, new();
 
     }
 }

@@ -23,7 +23,7 @@ namespace XF.CQRS.Abstractions
             return service.Delete(context).Response;
         }
 
-        public static IQueryContext<T> Execute<T>(this IQueryService<T> service, IQueryRequest request, int paginationOffset = 2) where T : class, new()
+        public static IQueryResponse<T> Execute<T>(this IQueryService<T> service, IQueryRequest request, int paginationOffset = 2) where T : class, new()
         {
             IQueryContext<T> context = new QueryContext<T>()
             {
@@ -31,7 +31,7 @@ namespace XF.CQRS.Abstractions
                 Response = new QueryResponse<T>() { Page = new Page<T>() { Index = request.PageIndex, Size = request.PageSize } }
             };
             IQueryContext<T> ctx = service.Execute(context).Paginate(paginationOffset);
-            return ctx;
+            return ctx.Response;
         }
         public static IQueryContext<T> Paginate<T>(this IQueryContext<T> context, int maxOffset = 2) where T : class, new()
         {

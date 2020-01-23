@@ -8,16 +8,11 @@ namespace XF.Rest.Abstractions
 {
     public interface IRequest<T> where T : class, new()
     {
-        string Verb { get; set; }
+        CommandOption Command { get; set; }
 
         T Model { get; set; }
 
-        IEnumerable<T> Content { get; set; }
+        IParameters Parameters { get; set; }
 
-        IParameters Parameters { get; }
-
-        IProjections Projections { get; set; }
-
-        DataSet Data { get; set; }
     }
 }

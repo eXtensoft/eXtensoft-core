@@ -18,22 +18,29 @@ namespace XF.Rest.Abstractions
         public T Model
         {
             get { return _Items.Count > 0 ? _Items[0] : default(T); }
+            set { _Items.Add(value); }
         }
 
         private bool _IsOkay = false;
-        bool IResponse<T>.IsOkay { get { return _IsOkay; } set { _IsOkay = value; } }
+        public bool IsOkay { get { return _IsOkay; } set { _IsOkay = value; } }
 
         private IStatus _Status = null;
-        IStatus IResponse<T>.Status { get { return _Status; } set { _Status = value; } }
+        public IStatus Status { get { return _Status; } set { _Status = value; } }
 
-        int IResponse<T>.Count { get { return Items.Count; } }
+        private int _Count = -1;
+        public int Count { 
+            get 
+            { 
+                return _Count > -1 ? _Count: Items.Count; 
+            }
+            set
+            {
+                _Count = value;
+            }
+        }
 
         private int _Elapsed = 0;
-        long IResponse<T>.Elapsed { get { return _Elapsed; } }
-        T IResponse<T>.Model
-        {
-            get { return _Items.Count > 0 ? _Items[0] : default(T); }
-        }
+        public long Elapsed { get { return _Elapsed; } }
 
         private Page<T> _Page = null;
         public Page<T> Page

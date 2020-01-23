@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XF.Core.Abstractions", "src\XF.Core.Abstractions\XF.Core.Abstractions.csproj", "{F98FC567-6C67-4203-BB3E-87100FA1CC41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XF.Core.Abstractions", "src\XF.Core.Abstractions\XF.Core.Abstractions.csproj", "{F98FC567-6C67-4203-BB3E-87100FA1CC41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XF.Data.Abstractions", "src\XF.Data.Abstractions\XF.Data.Abstractions.csproj", "{F3F559DA-246B-4F01-82AC-0B6DECF6D6D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XF.Data.Abstractions", "src\XF.Data.Abstractions\XF.Data.Abstractions.csproj", "{F3F559DA-246B-4F01-82AC-0B6DECF6D6D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{70045C8D-CB59-42FD-BE67-ED63AAB5C5A0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{37A30953-442F-4790-865E-27178D0D3528}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XF.Core.Abstractions.Test", "test\XF.Core.Abstractions.Test\XF.Core.Abstractions.Test.csproj", "{AB61B08B-C413-4843-879B-E5E5F24240AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XF.Core.Abstractions.Test", "test\XF.Core.Abstractions.Test\XF.Core.Abstractions.Test.csproj", "{AB61B08B-C413-4843-879B-E5E5F24240AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XF.Data.Abstractions.Test", "test\XF.Data.Abstractions.Test\XF.Data.Abstractions.Test.csproj", "{A1CA9D17-CA78-4B89-BA94-CF88CEE046CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XF.Data.Abstractions.Test", "test\XF.Data.Abstractions.Test\XF.Data.Abstractions.Test.csproj", "{A1CA9D17-CA78-4B89-BA94-CF88CEE046CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XF.Data.SqlServer", "src\XF.Data.SqlServer\XF.Data.SqlServer.csproj", "{DDBC7299-548C-448B-958D-76C97F3572E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XF.Data.Elastic", "src\XF.Data.Elastic\XF.Data.Elastic.csproj", "{E9C9D95F-BE08-4DEA-BA4A-C4C79FC35FF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +41,14 @@ Global
 		{A1CA9D17-CA78-4B89-BA94-CF88CEE046CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1CA9D17-CA78-4B89-BA94-CF88CEE046CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1CA9D17-CA78-4B89-BA94-CF88CEE046CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDBC7299-548C-448B-958D-76C97F3572E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBC7299-548C-448B-958D-76C97F3572E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBC7299-548C-448B-958D-76C97F3572E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBC7299-548C-448B-958D-76C97F3572E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9C9D95F-BE08-4DEA-BA4A-C4C79FC35FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9C9D95F-BE08-4DEA-BA4A-C4C79FC35FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9C9D95F-BE08-4DEA-BA4A-C4C79FC35FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9C9D95F-BE08-4DEA-BA4A-C4C79FC35FF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +58,8 @@ Global
 		{F3F559DA-246B-4F01-82AC-0B6DECF6D6D8} = {70045C8D-CB59-42FD-BE67-ED63AAB5C5A0}
 		{AB61B08B-C413-4843-879B-E5E5F24240AB} = {37A30953-442F-4790-865E-27178D0D3528}
 		{A1CA9D17-CA78-4B89-BA94-CF88CEE046CD} = {37A30953-442F-4790-865E-27178D0D3528}
+		{DDBC7299-548C-448B-958D-76C97F3572E1} = {70045C8D-CB59-42FD-BE67-ED63AAB5C5A0}
+		{E9C9D95F-BE08-4DEA-BA4A-C4C79FC35FF7} = {70045C8D-CB59-42FD-BE67-ED63AAB5C5A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F29353F-9AF2-4AA8-827A-63BAA137EC31}

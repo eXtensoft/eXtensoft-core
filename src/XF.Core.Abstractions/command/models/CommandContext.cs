@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace XF.CQRS.Abstractions
 {
@@ -8,11 +6,12 @@ namespace XF.CQRS.Abstractions
     {
         public ICommandRequest<T> Request { get; set; }
         public ICommandResponse<T> Response { get; set; }
-        public DateTime Tds { get; set; }
+        public long Begin { get; set; }
+        public long End { get; set; }
 
         public CommandContext()
         {
-            Tds = DateTime.Now;
+            
         }
     }
 }

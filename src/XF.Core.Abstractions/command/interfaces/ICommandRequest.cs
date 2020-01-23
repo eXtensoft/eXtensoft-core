@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using XF.Core.Abstractions;
 
 namespace XF.CQRS.Abstractions
 {
@@ -8,5 +9,6 @@ namespace XF.CQRS.Abstractions
     {
         CommandOption Command { get; set; }
         T Model { get; set; }
+        IParameters Parameters { get; set; }
     }
 }

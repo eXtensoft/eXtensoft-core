@@ -9,5 +9,6 @@ namespace XF.CQRS.Abstractions
         ICommandContext<T> Post(ICommandContext<T> context);
         ICommandContext<T> Put(ICommandContext<T> context);
         ICommandContext<T> Delete(ICommandContext<T> context);
+
     }
 }
