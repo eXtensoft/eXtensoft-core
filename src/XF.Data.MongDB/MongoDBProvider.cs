@@ -16,7 +16,6 @@ namespace XF.Data.MongoDB
         protected string DatabaseName { get; set; }
         protected abstract string ConnectionKey { get; }
         protected ILogger Logger { get; set; }
-
         protected bool InitializeMongoDB()
         {
             var connectionstring = ConnectionStringProvider.Get(ConnectionKey);

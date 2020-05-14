@@ -21,6 +21,17 @@ namespace XF.Data.MongoDB.Instrumentation
                     .SetIdGenerator(StringObjectIdGenerator.Instance);
                 });
             }
+            if (!BsonClassMap.IsClassMapRegistered(typeof(RequestInfo)))
+            {
+                BsonClassMap.RegisterClassMap<RequestInfo>(cm => {
+                    cm.AutoMap();
+                    cm.SetIgnoreExtraElements(true);
+                    cm.MapIdProperty(c => c.Id);
+                    cm.MapIdMember(c => c.Id)
+                    .SetSerializer(new StringSerializer(BsonType.ObjectId))
+                    .SetIdGenerator(StringObjectIdGenerator.Instance);
+                });
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace XF.Data.MongoDB
         }
         protected IMongoCollection<T> Collection { get; set; }
 
-        protected IApiRequestInfo RequestInfo { get; private set; }
+        protected IRequestInfo RequestInfo { get; private set; }
 
         protected virtual bool Initialize()
         {

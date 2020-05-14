@@ -7,6 +7,8 @@ using XF.Api.Abstractions;
 using XF.Core.Abstractions;
 using XF.CQRS.Abstractions;
 using XF.Rest.Abstractions;
+using System.Linq;
+using MongoDB.Driver;
 
 namespace XF.Data.MongoDB
 {
@@ -90,8 +92,24 @@ namespace XF.Data.MongoDB
             return b;
         }
 
+        public static bool TryBuildFilter<T>(this IParameters parameters, out FilterDefinition<T> filter ) where T : class, new()
+        {
+            bool b = false;
+            var builder = Builders<T>.Filter;
+            if (parameters.Count() == 1)
+            {
+                filter = builder.Eq(parameters.First().Key, parameters.First().Value);
+                b = true;
+            }
+            else
+            {
+                filter = builder.Empty;
+            }
+            return b;
+        }
+
         public static void OnException<T>(this DataResponse<T> response, 
-            IApiRequestInfo request,
+            IRequestInfo request,
             HttpVerb httpVerb, 
             Exception ex, 
             IParameters parameters, 
@@ -117,7 +135,7 @@ namespace XF.Data.MongoDB
       
 
         public static void OnException<T>(this CommandResponse<T> response,
-            IApiRequestInfo request,
+            IRequestInfo request,
             HttpVerb httpVerb,
             Exception ex,
             IParameters parameters,

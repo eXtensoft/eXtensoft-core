@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using XF.Core.Abstractions;
 
 namespace XF.CQRS.Abstractions
 {
     public static class Extensions
     {
+
         public static ICommandContext<T> Post<T>(this ICommandContext<T> context, T model) where T : class, new()
         {
             context.Request = new CommandRequest<T>() { Model = model, Command = CommandOption.POST };

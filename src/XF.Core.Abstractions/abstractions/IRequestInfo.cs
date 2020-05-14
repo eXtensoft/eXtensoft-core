@@ -4,8 +4,10 @@ using System.Text;
 
 namespace XF.Api.Abstractions
 {
-    public interface IApiRequestInfo
+    public interface IRequestInfo
     {
+        string TrackingId { get; set; }
+        PlatformInfo Platform { get; set; }
         string Prefix { get; set; }
         string Id { get; set; }
         string CorrelationId { get; set; }
@@ -19,6 +21,7 @@ namespace XF.Api.Abstractions
         string Host { get; set; }
         string Scheme { get; set; }
         string Path { get; set; }
+        string RoutingPath { get; set; }
         string QueryString { get; set; }
         string Controller { get; set; }
         string Method { get; set; }

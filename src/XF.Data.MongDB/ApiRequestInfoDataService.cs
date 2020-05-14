@@ -10,30 +10,39 @@ using XF.Rest.Abstractions;
 
 namespace XF.Data.MongoDB
 {
-    public class ApiRequestInfoDataService : MongoDBDataService<ApiRequestInfo>, IApiRequestInfoDataService
+    public class RequestInfoDataService : MongoDBDataService<RequestInfo>, IApiRequestInfoDataService, IRequestInfoDataService
     {
         protected override string ConnectionKey => "instrumentation";
 
-        static ApiRequestInfoDataService()
+        static RequestInfoDataService()
         {
             ClassMapRegistrar.Register();
         }
 
 
-        public ApiRequestInfoDataService(ILoggerFactory loggerFactory,
-            IConnectionStringProvider connectionStringProvider)
+        public RequestInfoDataService(ILoggerFactory loggerFactory,
+            IConnectionStringProvider connectionStringProvider):base(connectionStringProvider)
         {
-            Logger = loggerFactory.CreateLogger<ApiRequestInfoDataService>();
-            ConnectionStringProvider = connectionStringProvider ?? throw new ArgumentNullException(nameof(connectionStringProvider));
+            Logger = loggerFactory.CreateLogger<RequestInfoDataService>();
             Initialize();
         }
 
         void IApiRequestInfoDataService.Post(IApiRequestInfo model)
         {
-            this.Post(model as ApiRequestInfo);
+            this.Post(model as RequestInfo);
         }
 
         IResponse<Page<ApiRequestInfo>> IApiRequestInfoDataService.Get(int limit, int offset, string marker)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRequestInfoDataService.Post(IRequestInfo model)
+        {
+            this.Post(model as RequestInfo);
+        }
+
+        IResponse<Page<RequestInfo>> IRequestInfoDataService.Get(int limit, int offset, string marker)
         {
             throw new NotImplementedException();
         }

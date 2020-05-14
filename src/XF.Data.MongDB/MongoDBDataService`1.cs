@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using XF.Api.Abstractions;
 using XF.Core.Abstractions;
+using XF.Data.Abstractions;
 using XF.Rest.Abstractions;
 
 namespace XF.Data.MongoDB
@@ -25,7 +26,20 @@ namespace XF.Data.MongoDB
 
         protected IMongoCollection<T> Collection { get; set; }
 
-        protected IApiRequestInfo RequestInfo { get; private set; }
+        protected IRequestInfo RequestInfo { get; private set; }
+
+        //public MongoDBDataService(IConnectionStringProvider connectionStringProvider, 
+        //    IRequestInfo requestInfo)
+        //{
+        //    ConnectionStringProvider = connectionStringProvider ?? throw new ArgumentNullException(nameof(connectionStringProvider));
+        //    RequestInfo = requestInfo ?? throw new ArgumentNullException(nameof(requestInfo));
+        //}
+
+        public MongoDBDataService(IConnectionStringProvider connectionStringProvider)
+        {
+            ConnectionStringProvider = connectionStringProvider ?? throw new ArgumentNullException(nameof(connectionStringProvider));
+        }
+
 
         protected virtual bool Initialize()
         {
@@ -72,9 +86,9 @@ namespace XF.Data.MongoDB
 
         async Task<IMessageContext<T>> IDataService<T>.GetAsync(IMessageContext<T> message)
         {
+            message.Begin = DateTime.Now.Ticks;
             message.Response = await GetAsync(message.Request.Parameters);
-            message.End = DateTime.Now.Ticks;
-            message.End = DateTime.Now.Ticks; return message;
+            message.End = DateTime.Now.Ticks; 
             return message;
         }
 
@@ -88,9 +102,9 @@ namespace XF.Data.MongoDB
 
         async Task<IMessageContext<T>> IDataService<T>.PostAsync(IMessageContext<T> message)
         {
+            message.Begin = DateTime.Now.Ticks;
             message.Response = await PostAsync(message.Request.Model);
             message.End = DateTime.Now.Ticks;
-            message.End = DateTime.Now.Ticks; return message;
             return message;
         }
 
@@ -143,33 +157,34 @@ namespace XF.Data.MongoDB
         protected virtual IResponse<T> Get(IParameters parameters)
         {
             var response = new DataResponse<T>().Default();
-            if (parameters != null && parameters.TryGetValue<string>("Id",out string id))
+            FilterDefinition<T> filter;
+            //if (TryBuildGetFilter(parameters, out filter) || parameters.TryBuildFilter<T>(out filter))
+            if ( parameters.TryBuildFilter<T>(out filter) || TryBuildGetFilter(parameters, out filter))
             {
                 try
                 {
-                    var filter = Builders<T>.Filter.Eq("Id", id);
                     response.Items = Collection.Find<T>(filter).ToList();
+                    if (response.Items.Count == 0)
+                    {
+                        response.Status.HttpStatus = System.Net.HttpStatusCode.NotFound;
+                        response.IsOkay = false;
+                    }
                 }
                 catch (Exception ex)
                 {
                     OnException(response, HttpVerb.GET, ex, parameters, null);
                 }
-            }
-            else
-            {
-                try
-                {
-                    var filter = Builders<T>.Filter.Empty;
-                    response.Items = Collection.Find<T>(filter).ToList();
-                }
-                catch (Exception ex)
-                {
-                    OnException(response, HttpVerb.GET, ex, parameters, null);
-                }
-
             }
             return response;
         }
+
+        protected virtual bool TryBuildGetFilter(IParameters parameters, 
+            out FilterDefinition<T> filter)
+        {
+            filter = Builders<T>.Filter.Empty;
+            return false;
+        }
+
         protected virtual async Task<IResponse<T>> GetAsync(IParameters parameters)
         {
             var response = new DataResponse<T>().Default();
