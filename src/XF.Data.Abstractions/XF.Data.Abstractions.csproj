@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,6 +29,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\XF.Core.Abstractions\XF.Core.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="cache\" />
+    <Folder Include="concurrent\" />
+    <Folder Include="event-sourcing\" />
+    <Folder Include="interfaces\" />
+    <Folder Include="serialization\" />
+    <Folder Include="services\" />
+    <Folder Include="standard-contract\" />
   </ItemGroup>
 
 </Project>

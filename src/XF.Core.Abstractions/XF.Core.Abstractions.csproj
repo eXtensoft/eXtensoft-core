@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   
   <PropertyGroup>
@@ -22,9 +22,34 @@
     <Version>1.0.1</Version>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Remove="message.elide\IMessage`1.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="abstractions\" />
+    <Folder Include="architecture\command\interfaces\" />
+    <Folder Include="architecture\command\models\" />
+    <Folder Include="architecture\command\services\" />
+    <Folder Include="architecture\common\interfaces\" />
+    <Folder Include="architecture\common\models\" />
+    <Folder Include="architecture\query\aggregation\" />
+    <Folder Include="architecture\query\interfaces\" />
+    <Folder Include="architecture\query\models\" />
+    <Folder Include="architecture\query\pagination\" />
+    <Folder Include="architecture\query\services\" />
+    <Folder Include="architecture\standard-contract\interfaces\" />
+    <Folder Include="architecture\standard-contract\services\" />
+    <Folder Include="cache\" />
+    <Folder Include="core\" />
+    <Folder Include="data\site\" />
+    <Folder Include="instrumentation\request\platform\" />
+    <Folder Include="message.elide\" />
   </ItemGroup>
 
 </Project>
